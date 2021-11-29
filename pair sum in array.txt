@@ -1,0 +1,140 @@
+from sys import stdin
+
+def pairSum(arr, n, num) :
+
+    i = 0
+    j = len(arr) - 1
+    count = 0
+    arr.sort()
+    while i < j:
+        if arr[i] + arr[j] > num:
+            j = j-1
+        elif arr[i] + arr[j] < num:
+            i = i + 1
+        
+        elif arr[i] == arr[j]:
+            count += (j+1)*(j) // 2
+            return count 
+        
+        elif arr[i] + arr[j] == num:
+
+            sf = i + 1
+            ef = j - 1
+            while sf < j:
+                if arr[sf] == arr[i]:
+                    sf += 1
+                else:
+                    break
+  
+            while ef > i:
+                if arr[ef] == arr[j]:
+                    ef -= 1
+                else: 
+                    break
+      
+            count += (sf-i) * (j-ef)
+            i = i + (sf-i)
+            j = ef
+            
+
+    return count
+
+
+
+
+#taking input using fast I/O method
+def takeInput() :
+    n = int(stdin.readline().strip())
+    if n == 0 :
+        return list(), 0
+
+    arr = list(map(int, stdin.readline().strip().split(" ")))
+    return arr, n
+
+
+def printList(arr, n) : 
+    for i in range(n) :
+        print(arr[i], end = " ")
+    print()
+
+
+#main
+t = int(stdin.readline().strip())
+
+while t > 0 :
+    
+    arr, n = takeInput()
+    num = int(stdin.readline().strip())
+    print(pairSum(arr, n, num))
+
+    t -= 1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# from sys import stdin
+
+# def pairSum(arr, n, num) :
+#     arr.sort()
+#     i=0
+#     j=n-1 
+#     count=0
+#     while i<=j:
+#         if arr[i]+arr[j]<num:
+#             i+=1
+#         elif arr[i]+arr[j]>num:
+#             j-=1
+        
+            
+            
+#         elif arr[i]+arr[j]==num:
+#             count+=1
+            
+            
+#             if arr[i]==arr[i+1]:
+#                 i+=1
+#             elif arr[j]==arr[j-1]:
+#                   j-=1
+#             else:
+#                 i+=1
+#                 j-=1
+#     return count        
+            
+        
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
